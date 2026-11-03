@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metahacker: the Hacker-X Seismological Survey</title>
+<meta name="description" content="A seismograph for “HackerTube, but for X.” Every Hacker News version of something since 2007, plotted as an earthquake catalog, with an Omori-law aftershock forecast.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hacker News is in an aftershock sequence">
+<meta property="og:description" content="Every “Hacker News, but for X” since 2007, as an earthquake catalog. Mainshock: HackerTube, M 7.9. Aftershocks: ongoing.">
+<meta property="og:image" content="https://vitalogism.github.io/metahacker/assets/og.png">
+<meta property="og:url" content="https://vitalogism.github.io/metahacker/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#101214">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/public-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="data/events.json" as="fetch" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="module" src="assets/js/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead__row">
+    <a class="brand" href="./" aria-label="Metahacker home">
+      <svg class="brand__mark" viewBox="0 0 40 24" aria-hidden="true"><path d="M0 12h9l2-3 2 5 2-9 3 15 3-14 2 10 2-6 2 3h13" /></svg>
+      <span class="brand__name">metahacker</span>
+      <span class="brand__agency">Hacker-X Seismological Survey</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#forecast">Forecast</a>
+      <a href="#felt">Felt reports</a>
+      <a href="#record">Record</a>
+      <a href="#faults">Faults</a>
+      <a href="#catalog">Catalog</a>
+      <a href="#methods">Methods</a>
+    </nav>
+  </div>
+</header>
+
+<div class="alert" role="status">
+  <div class="wrap alert__row">
+    <svg class="alert__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 15 14H1z" /><path class="alert__glyph" d="M8 6v4M8 11.5v1" /></svg>
+    <p class="alert__long"><strong>PAGER alert level: Orange.</strong> Aftershock sequence in progress: <span data-bind="aftershocks">36</span> aftershocks since <span data-bind="mainshock-time">Oct 31, 19:56 UTC</span>. Instruments last read <time data-bind="updated">today</time>.</p>
+    <p class="alert__short" aria-hidden="true"><strong>PAGER: Orange.</strong> <span data-bind="aftershocks">36</span> aftershocks since Oct 31.</p>
+  </div>
+</div>
+
+<main id="main">
+
+<section class="hero wrap" aria-labelledby="hero-title">
+  <div class="hero__text">
+    <h1 id="hero-title">Hacker News is in an aftershock sequence.</h1>
+    <p class="lede">On October 31 at 19:56 UTC, <a href="https://news.ycombinator.com/item?id=50319510">HackerTube</a> (YouTube, built from videos recommended by HN) struck the front page at magnitude <span data-bind="mainshock-m">7.9</span>. The instruments have since recorded <strong><span data-bind="aftershocks">36</span> aftershocks</strong> of the form “HackerTube, but for X.” This survey has monitored the fault zone since 2007. Please remain calm and do not register any domains.</p>
+
+    <table class="summary">
+      <caption>Mainshock</caption>
+      <tbody>
+        <tr><th scope="row">Magnitude</th><td><span data-bind="mainshock-m">7.9</span> M<sub>HN</sub></td></tr>
+        <tr><th scope="row">Origin time</th><td><span data-bind="mainshock-origin">2026-10-31 19:56 UTC</span></td></tr>
+        <tr><th scope="row">Epicenter</th><td>karpathy.bearblog.dev</td></tr>
+        <tr><th scope="row">Depth</th><td><span data-bind="mainshock-depth">632</span> comments</td></tr>
+        <tr><th scope="row">Rupture time</th><td>about 2 hours, per the author</td></tr>
+        <tr><th scope="row">Largest aftershock</th><td data-bind="largest-aftershock">7.5, HackerBooks, +20 h</td></tr>
+        <tr><th scope="row">Tsunami</th><td>No. Bookmarks only.</td></tr>
+      </tbody>
+    </table>
+
+    <p class="hero__actions">
+      <a class="button" href="#forecast">Read the forecast</a>
+      <a class="textlink" href="#catalog">Browse all <span data-bind="events-total">104</span> events</a>
+    </p>
+  </div>
+
+  <figure class="drum-figure hero__drum">
+    <div class="drum" id="sequence-drum" data-drum="sequence"></div>
+    <figcaption>Station HXGS-1, sequence drum. Each line is <span data-bind="line-hours">four hours</span>, UTC, read left to right and top to bottom. Each wavelet is a post; its amplitude follows its magnitude, and big ones ring on into the next line, as they do on paper. The pen is live.</figcaption>
+  </figure>
+</section>
+
+<section class="section forecast wrap" id="forecast" aria-labelledby="forecast-title">
+  <div class="section__head">
+    <h2 id="forecast-title">Aftershock forecast</h2>
+    <p>Aftershock rates usually decay like 1/t (Omori, 1894). We fit the Omori–Utsu law to this sequence by maximum likelihood, and draw magnitudes from a Gutenberg–Richter distribution fitted to the same posts.</p>
+  </div>
+  <div class="forecast__grid">
+    <div class="forecast__text">
+      <p class="fit-status" data-bind="fit-status">Computing the fit.</p>
+      <div class="table-scroll">
+        <table class="forecast-table">
+          <caption>Expected aftershocks, and the chance of at least one at each magnitude or above</caption>
+          <thead>
+            <tr><th scope="col">Window</th><th scope="col">Expected</th><th scope="col">M 5+<span>≈150 points</span></th><th scope="col">M 6+<span>≈400 points</span></th><th scope="col">M 7+<span>≈1,100 points</span></th></tr>
+          </thead>
+          <tbody data-bind="forecast-rows"></tbody>
+        </table>
+      </div>
+      <dl class="notes">
+        <dt>Return to background</dt>
+        <dd data-bind="background">Computing.</dd>
+        <dt>Båth’s law check</dt>
+        <dd data-bind="bath">Computing.</dd>
+      </dl>
+    </div>
+    <figure class="chart-figure">
+      <div class="legend" aria-hidden="true">
+        <span class="legend__item"><span class="key key--observed"></span>Observed</span>
+        <span class="legend__item"><span class="key key--model"></span>Omori–Utsu fit, then forecast</span>
+      </div>
+      <div class="chart" id="omori-chart"></div>
+      <figcaption>Cumulative aftershocks since the mainshock. The shaded band is the 90% range of the forecast.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section felt wrap" id="felt" aria-labelledby="felt-title">
+  <div class="section__head">
+    <h2 id="felt-title">Did you feel it?</h2>
+    <p>The Modified Mercalli Intensity scale, Hacker-X revision. Tap the highest intensity you have personally felt. Reports are stored in your browser and nowhere else.</p>
+  </div>
+  <form class="mmi" id="mmi">
+    <fieldset>
+      <legend class="visually-hidden">Highest intensity you have felt</legend>
+      <ol class="mmi__list" data-bind="mmi-list">
+        <li class="mmi__item">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="I">
+            <span class="mmi__numeral" style="--mmi:#ffffff;" aria-hidden="true">I</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity I: </span>Not felt.</strong><span>Posted at 3 a.m. Pacific. One point, from the author.</span></span>
+          </label>
+        </li>
+        <li class="mmi__item">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="II">
+            <span class="mmi__numeral" style="--mmi:#bfccff;" aria-hidden="true">II</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity II: </span>Felt by the author.</strong><span>Refreshes /newest. Considers a second account. Does not.</span></span>
+          </label>
+        </li>
+        <li class="mmi__item">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="III">
+            <span class="mmi__numeral" style="--mmi:#a0e6ff;" aria-hidden="true">III</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity III: </span>Felt by a few.</strong><span>A single reply: “Neat!” The author answers within forty seconds.</span></span>
+          </label>
+        </li>
+        <li class="mmi__item">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="IV">
+            <span class="mmi__numeral" style="--mmi:#80ffff;" aria-hidden="true">IV</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity IV: </span>Felt indoors by many.</strong><span>Someone requests dark mode. Someone requests an RSS feed.</span></span>
+          </label>
+        </li>
+        <li class="mmi__item">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="V">
+            <span class="mmi__numeral" style="--mmi:#7aff93;" aria-hidden="true">V</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity V: </span>Felt by nearly everyone on /show.</strong><span>A commenter links the 2013 project that did it first.</span></span>
+          </label>
+        </li>
+        <li class="mmi__item">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="VI">
+            <span class="mmi__numeral" style="--mmi:#ffff00;" aria-hidden="true">VI</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity VI: </span>Servers sway.</strong><span>The post is edited: “Hugged to death, back up now.”</span></span>
+          </label>
+        </li>
+        <li class="mmi__item" data-observed="50326821">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="VII">
+            <span class="mmi__numeral" style="--mmi:#ffc800;" aria-hidden="true">VII</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity VII: </span>Copies form.</strong><span>Within a day, someone posts it, but for books.</span></span>
+          </label>
+        </li>
+        <li class="mmi__item" data-observed="50336496">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="VIII">
+            <span class="mmi__numeral" style="--mmi:#ff9100;" aria-hidden="true">VIII</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity VIII: </span>Felt reports filed.</strong><span>An Ask HN asks whether anyone else is worried.</span></span>
+          </label>
+        </li>
+        <li class="mmi__item" data-observed="50319510">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="IX">
+            <span class="mmi__numeral" style="--mmi:#ff0000;" aria-hidden="true">IX</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity IX: </span>A moderator appears.</strong><span>Part of the thread earns a reminder about the guidelines.</span></span>
+          </label>
+        </li>
+        <li class="mmi__item" data-observed="50339309">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="X">
+            <span class="mmi__numeral" style="--mmi:#c80000;--mmi-ink:#fff" aria-hidden="true">X</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity X: </span>Aggregators of the copies form.</strong><span>Then aggregators of those.</span></span>
+          </label>
+        </li>
+        <li class="mmi__item" data-observed="50327900">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="XI">
+            <span class="mmi__numeral" style="--mmi:#a00000;--mmi-ink:#fff" aria-hidden="true">XI</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity XI: </span>Hacker News is submitted to Hacker News.</strong><span>As a Show HN. More than once.</span></span>
+          </label>
+        </li>
+        <li class="mmi__item" data-observed="self">
+          <label class="mmi__label">
+            <input type="radio" name="mmi" value="XII">
+            <span class="mmi__numeral" style="--mmi:#800000;--mmi-ink:#fff" aria-hidden="true">XII</span>
+            <span class="mmi__text"><strong><span class="visually-hidden">Intensity XII: </span>Total recursion.</strong><span>Someone builds a seismological survey of the whole thing. You are reading it.</span></span>
+          </label>
+        </li>
+      </ol>
+    </fieldset>
+    <p class="mmi__receipt" id="mmi-receipt" aria-live="polite"></p>
+  </form>
+</section>
+
+<section class="section record wrap" id="record" aria-labelledby="record-title">
+  <div class="section__head">
+    <h2 id="record-title">This has happened before.</h2>
+    <p>The fault zone has produced <span data-bind="events-instrumental">102</span> recorded ruptures since Startup News opened in February 2007. Most were small. The record below has one line per year, and the 2026 line runs out where the pen is.</p>
+  </div>
+  <figure class="drum-figure">
+    <div class="drum drum--record" id="record-drum" data-drum="record"></div>
+    <figcaption>Station HXGS-1, long-period drum, 2007–2026. One line per calendar year, at lower gain, so the largest events clip. Labels mark each year’s largest event.</figcaption>
+  </figure>
+</section>
+
+<section class="section faults wrap" id="faults" aria-labelledby="faults-title">
+  <div class="section__head">
+    <h2 id="faults-title">Fault systems</h2>
+    <p>Every event is assigned to one of five faults by the shape of its title. Each strip runs from 2007 to today.</p>
+  </div>
+  <ol class="fault-list" data-bind="fault-list">
+    <li class="fault" data-fault="bedrock">
+      <div><h3>Bedrock</h3><p class="fault__form">Hacker News itself</p><p class="fault__desc">The original site and its source code. Everything else rests on it.</p></div>
+      <div class="fault__data"></div>
+    </li>
+    <li class="fault" data-fault="but-for">
+      <div><h3>But-For Fault</h3><p class="fault__form">Hacker News, but for X</p><p class="fault__desc">An HN-shaped site for another community: ideas, finance, designers, cars, gamedev, independent blogs.</p></div>
+      <div class="fault__data"></div>
+    </li>
+    <li class="fault" data-fault="mentioned-on">
+      <div><h3>Mentioned-On Fault</h3><p class="fault__form">X, as mentioned on HN</p><p class="fault__desc">Mine the comments for books, videos, courses or papers, then rank them. The fault that produced the 2026 mainshock.</p></div>
+      <div class="fault__data"></div>
+    </li>
+    <li class="fault" data-fault="reskin">
+      <div><h3>Reskin Fault</h3><p class="fault__form">Hacker News, but as X</p><p class="fault__desc">The same stories in a new costume: newsprint, Teletext, Windows XP, The New York Times, TikTok. Also the converse, X but for Hacker News.</p></div>
+      <div class="fault__data"></div>
+    </li>
+    <li class="fault" data-fault="ouroboros">
+      <div><h3>Ouroboros Fault</h3><p class="fault__form">Hacker X, but for Hacker X</p><p class="fault__desc">Aggregators of the aggregators, and Hacker News submitted to Hacker News. This page sits on it.</p></div>
+      <div class="fault__data"></div>
+    </li>
+  </ol>
+</section>
+
+<section class="section catalog wrap" id="catalog" aria-labelledby="catalog-title">
+  <div class="section__head">
+    <h2 id="catalog-title">Catalog of events</h2>
+    <p>Every post the survey has recorded. Magnitudes refresh every six hours from Hacker News. Events marked unreviewed were picked up by the instruments and have not yet been read by a seismologist.</p>
+  </div>
+  <div class="filters" role="group" aria-label="Filter the catalog">
+    <div class="segmented" role="radiogroup" aria-label="Fault" data-bind="fault-filter"></div>
+    <label class="search">
+      <span class="visually-hidden">Find an event</span>
+      <input type="search" id="catalog-search" placeholder="Find an event" autocomplete="off" spellcheck="false">
+    </label>
+    <label class="sort">
+      <span>Sort</span>
+      <select id="catalog-sort">
+        <option value="newest">Newest first</option>
+        <option value="largest">Largest first</option>
+        <option value="oldest">Oldest first</option>
+      </select>
+    </label>
+  </div>
+  <p class="catalog__count" data-bind="catalog-count" aria-live="polite"></p>
+  <div class="table-scroll">
+    <table class="events">
+      <caption class="visually-hidden">Catalog of Hacker-X events</caption>
+      <thead>
+        <tr><th scope="col" class="num">M</th><th scope="col">Origin time (UTC)</th><th scope="col">Event and felt report</th><th scope="col">Fault</th><th scope="col" class="num">On HN</th></tr>
+      </thead>
+      <tbody data-bind="catalog-rows"></tbody>
+    </table>
+  </div>
+  <noscript><p>The catalog needs JavaScript. The raw data is at <a href="data/events.json">data/events.json</a>.</p></noscript>
+</section>
+
+<section class="section methods wrap" id="methods" aria-labelledby="methods-title">
+  <div class="section__head">
+    <h2 id="methods-title">Methods</h2>
+  </div>
+  <dl class="methods__list">
+    <dt>Data</dt>
+    <dd>Posts, points and comment counts come from the <a href="https://hn.algolia.com/api">HN Search API</a>. A <a href="https://github.com/vitalogism/metahacker/blob/main/scripts/update.py">small script</a> refreshes them every six hours and looks for new posts. Everything is in <a href="data/events.json">one JSON file</a>.</dd>
+    <dt>Magnitude</dt>
+    <dd>M<sub>HN</sub> = 2.3 log<sub>10</sub>(points + 1), calibrated so that HackerTube lands near 7.9. A one-point post is M 0.7. Startup News predates the instruments; its magnitude is an estimate.</dd>
+    <dt>Faults</dt>
+    <dd>Events up to November 3, 2026 were classified and annotated by hand. Later events are classified by title patterns and marked unreviewed until someone reads them.</dd>
+    <dt>Forecast</dt>
+    <dd>Omori–Utsu rate n(t) = K / (t + c)<sup>p</sup>, fit by maximum likelihood over every post after the mainshock. Magnitudes follow Gutenberg–Richter with b estimated by Aki’s method. Probabilities assume a Poisson process, which is the most optimistic assumption on this page.</dd>
+    <dt>Corrections</dt>
+    <dd>Missed a clone, or found a fault in our faults? <a href="https://github.com/vitalogism/metahacker/issues/new?title=Event%20report&body=HN%20link%3A%20%0AFault%3A%20">File an event report</a> or open a pull request against the JSON.</dd>
+  </dl>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__row">
+    <p>Satire. Not affiliated with the USGS, Y Combinator, or any tectonic plate. Every project in this catalog is someone’s weekend, and we like all of them. The joke is the fault, not the rock.</p>
+    <p><a href="https://github.com/vitalogism/metahacker">Source on GitHub</a> · <a href="data/events.json">Data</a> · Science for a changing front page.</p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip" hidden></div>
+</body>
+</html>
