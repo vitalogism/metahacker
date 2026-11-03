@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-03T12:51:39Z",
- "checked_until": 1793710299,
+ "updated": "2026-11-03T13:13:43Z",
+ "checked_until": 1793711623,
  "mainshock": "50319510",
  "events": [
   {
@@ -828,7 +828,7 @@
    "t": 1793548708,
    "title": "Show HN: HackerBooks – HackerTube, but for books mentioned on HN",
    "url": "https://hackerbooks.org",
-   "points": 1829,
+   "points": 1830,
    "comments": 303,
    "fault": "mentioned-on",
    "short": "HackerBooks",
@@ -877,7 +877,7 @@
    "title": "Show HN: 13M opinions on 48k products extracted from Reddit and HN",
    "url": "https://www.trustmebro.reviews/r/hackernews",
    "points": 9,
-   "comments": 0,
+   "comments": 1,
    "fault": "mentioned-on",
    "short": "trustmebro.reviews",
    "felt": "13M opinions on 48k products, extracted from Reddit and HN. The domain name is doing the peer review.",
@@ -1188,7 +1188,7 @@
    "t": 1793670814,
    "title": "Show HN: Hacker Times, a New York Times-inspired version of Hacker News",
    "url": "https://hackertimes.ca/",
-   "points": 336,
+   "points": 340,
    "comments": 107,
    "fault": "reskin",
    "short": "Hacker Times",
