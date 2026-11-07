@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-07T13:11:40Z",
- "checked_until": 1794057100,
+ "updated": "2026-11-07T21:55:56Z",
+ "checked_until": 1794088556,
  "mainshock": "50319510",
  "events": [
   {
@@ -803,7 +803,7 @@
    "t": 1793476613,
    "title": "HackerTube: YouTube built from videos recommended by HN",
    "url": "https://karpathy.bearblog.dev/hacker-tube/",
-   "points": 2886,
+   "points": 2887,
    "comments": 641,
    "fault": "mentioned-on",
    "short": "HackerTube",
@@ -1404,8 +1404,8 @@
    "t": 1793984968,
    "title": "Show HN: Hacker Living – HN's most recommended places",
    "url": "https://hacker.living",
-   "points": 4,
-   "comments": 1,
+   "points": 6,
+   "comments": 2,
    "fault": "mentioned-on",
    "short": null,
    "felt": "Detected by the instruments. Not yet reviewed by a seismologist.",
