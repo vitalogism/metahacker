@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-08T06:10:29Z",
- "checked_until": 1794118229,
+ "updated": "2026-11-08T13:31:45Z",
+ "checked_until": 1794144705,
  "mainshock": "50319510",
  "events": [
   {
@@ -803,7 +803,7 @@
    "t": 1793476613,
    "title": "HackerTube: YouTube built from videos recommended by HN",
    "url": "https://karpathy.bearblog.dev/hacker-tube/",
-   "points": 2887,
+   "points": 2889,
    "comments": 641,
    "fault": "mentioned-on",
    "short": "HackerTube",
@@ -828,8 +828,8 @@
    "t": 1793548708,
    "title": "Show HN: HackerBooks – HackerTube, but for books mentioned on HN",
    "url": "https://hackerbooks.org",
-   "points": 1867,
-   "comments": 306,
+   "points": 1868,
+   "comments": 307,
    "fault": "mentioned-on",
    "short": "HackerBooks",
    "felt": "The largest aftershock so far, twenty hours in, and the sixth book list in this catalog.",
