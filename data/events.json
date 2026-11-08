@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-07T21:55:56Z",
- "checked_until": 1794088556,
+ "updated": "2026-11-08T06:10:29Z",
+ "checked_until": 1794118229,
  "mainshock": "50319510",
  "events": [
   {
@@ -828,7 +828,7 @@
    "t": 1793548708,
    "title": "Show HN: HackerBooks – HackerTube, but for books mentioned on HN",
    "url": "https://hackerbooks.org",
-   "points": 1865,
+   "points": 1867,
    "comments": 306,
    "fault": "mentioned-on",
    "short": "HackerBooks",
