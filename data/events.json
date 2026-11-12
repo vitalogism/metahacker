@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-11T19:39:53Z",
- "checked_until": 1794425993,
+ "updated": "2026-11-12T07:18:25Z",
+ "checked_until": 1794467905,
  "mainshock": "50319510",
  "events": [
   {
@@ -803,7 +803,7 @@
    "t": 1793476613,
    "title": "HackerTube: YouTube built from videos recommended by HN",
    "url": "https://karpathy.bearblog.dev/hacker-tube/",
-   "points": 2892,
+   "points": 2893,
    "comments": 644,
    "fault": "mentioned-on",
    "short": "HackerTube",
@@ -1464,8 +1464,20 @@
    "t": 1794326642,
    "title": "Show HN: Y Recombinator – The HN threads HN keeps recommending",
    "url": "https://yrecombinator.org/",
-   "points": 12,
-   "comments": 6,
+   "points": 13,
+   "comments": 7,
+   "fault": "mentioned-on",
+   "short": null,
+   "felt": "Detected by the instruments. Not yet reviewed by a seismologist.",
+   "reviewed": false
+  },
+  {
+   "id": "50459476",
+   "t": 1794435367,
+   "title": "HackerTube, HackerBooks, and HackerBlogs are not 3 but 1 > HacksMedia",
+   "url": null,
+   "points": 1,
+   "comments": 0,
    "fault": "mentioned-on",
    "short": null,
    "felt": "Detected by the instruments. Not yet reviewed by a seismologist.",
