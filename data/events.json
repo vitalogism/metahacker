@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-12T19:59:50Z",
- "checked_until": 1794513590,
+ "updated": "2026-11-13T06:51:50Z",
+ "checked_until": 1794552710,
  "mainshock": "50319510",
  "events": [
   {
@@ -803,8 +803,8 @@
    "t": 1793476613,
    "title": "HackerTube: YouTube built from videos recommended by HN",
    "url": "https://karpathy.bearblog.dev/hacker-tube/",
-   "points": 2893,
-   "comments": 645,
+   "points": 2894,
+   "comments": 646,
    "fault": "mentioned-on",
    "short": "HackerTube",
    "felt": "YouTube, built from 6,454 videos recommended in about 40,000 HN comments since 2007. It shipped an export of its data for your agent “to easily create your own version,” which lowered the activation energy of every aftershock below to roughly one prompt.",
@@ -828,7 +828,7 @@
    "t": 1793548708,
    "title": "Show HN: HackerBooks – HackerTube, but for books mentioned on HN",
    "url": "https://hackerbooks.org",
-   "points": 1869,
+   "points": 1870,
    "comments": 308,
    "fault": "mentioned-on",
    "short": "HackerBooks",
