@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-14T06:33:37Z",
- "checked_until": 1794638017,
+ "updated": "2026-11-14T18:11:46Z",
+ "checked_until": 1794679906,
  "mainshock": "50319510",
  "events": [
   {
@@ -1176,7 +1176,7 @@
    "t": 1793668689,
    "title": "Show HN: HackerTV – HN's most-recommended YT videos as 24/7 TV channels",
    "url": "https://hackertv.org",
-   "points": 490,
+   "points": 491,
    "comments": 84,
    "fault": "mentioned-on",
    "short": "HackerTV",
