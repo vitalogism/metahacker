@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-13T19:47:20Z",
- "checked_until": 1794599240,
+ "updated": "2026-11-14T06:33:37Z",
+ "checked_until": 1794638017,
  "mainshock": "50319510",
  "events": [
   {
@@ -803,7 +803,7 @@
    "t": 1793476613,
    "title": "HackerTube: YouTube built from videos recommended by HN",
    "url": "https://karpathy.bearblog.dev/hacker-tube/",
-   "points": 2894,
+   "points": 2895,
    "comments": 646,
    "fault": "mentioned-on",
    "short": "HackerTube",
@@ -1177,7 +1177,7 @@
    "title": "Show HN: HackerTV – HN's most-recommended YT videos as 24/7 TV channels",
    "url": "https://hackertv.org",
    "points": 490,
-   "comments": 83,
+   "comments": 84,
    "fault": "mentioned-on",
    "short": "HackerTV",
    "felt": "HN’s most-recommended videos as 24/7 channels. HackerTube, but for not choosing.",
