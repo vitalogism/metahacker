@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-15T18:55:20Z",
- "checked_until": 1794768920,
+ "updated": "2026-11-16T06:39:27Z",
+ "checked_until": 1794811167,
  "mainshock": "50319510",
  "events": [
   {
@@ -1464,7 +1464,7 @@
    "t": 1794326642,
    "title": "Show HN: Y Recombinator – The HN threads HN keeps recommending",
    "url": "https://yrecombinator.org/",
-   "points": 14,
+   "points": 15,
    "comments": 8,
    "fault": "mentioned-on",
    "short": null,
