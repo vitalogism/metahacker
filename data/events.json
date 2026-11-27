@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-26T21:39:03Z",
- "checked_until": 1795729143,
+ "updated": "2026-11-27T08:43:30Z",
+ "checked_until": 1795769010,
  "mainshock": "50319510",
  "events": [
   {
@@ -1512,7 +1512,7 @@
    "t": 1795609332,
    "title": "Show HN: HackerBrain, Book as a Model, 250 HN books into 50K+ rules, offline",
    "url": "https://www.enano.ai",
-   "points": 3,
+   "points": 4,
    "comments": 2,
    "fault": "mentioned-on",
    "short": null,
