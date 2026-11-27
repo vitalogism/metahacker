@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-27T08:43:30Z",
- "checked_until": 1795769010,
+ "updated": "2026-11-27T21:23:43Z",
+ "checked_until": 1795814623,
  "mainshock": "50319510",
  "events": [
   {
@@ -1513,7 +1513,7 @@
    "title": "Show HN: HackerBrain, Book as a Model, 250 HN books into 50K+ rules, offline",
    "url": "https://www.enano.ai",
    "points": 4,
-   "comments": 2,
+   "comments": 3,
    "fault": "mentioned-on",
    "short": null,
    "felt": "Detected by the instruments. Not yet reviewed by a seismologist.",
